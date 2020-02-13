@@ -1,0 +1,128 @@
+Todo Today:
+    YAS Proposta:
+        ✔ Achar proposta comercial YAS @5m @started(20-02-12 19:24) @done(20-02-12 21:04) @lasted(1h40m5s)
+            ✔ pedir proposta a Gabriela Guerra e Thadeu Rainho @done(20-02-12 19:35)
+        ✔ Procurar estimativa inicial YAS @10m @started(20-02-12 19:36) @done(20-02-12 19:49) @lasted(13m18s)
+            ✔ Extrair workflow empregado @5m @done(20-02-12 19:49)
+        ✔ Investigar proposta Coolers @5m @done(20-02-12 20:15)
+            // Informações relevantes do custo de desenvolvimento //
+            // Alguns outros pontos //
+
+    Data Vis:
+        ✔ Índice de Referências Data Vis, no Github. @done(20-02-13 17:25)
+            - https://github.com/fasouto/awesome-dataviz
+            // IMPORTANTE //
+        ✔ Investigar outras aplicações de Data Vis c/ Código @15m @started(20-02-13 17:07) @done(20-02-13 17:21) @lasted(14m1s)
+            - http://hint.fm/projects/look/
+            - https://experiments.cleverfranke.com/experiments/smart-office-visualization/
+
+        ✔ Investigar exemplos da biblioteca D3 @15m @started(20-02-12 20:15) @done(20-02-12 21:04) @lasted(49m5s)
+            https://www.d3-graph-gallery.com/
+            https://observablehq.com/
+            - https://observablehq.com/@d3/versor-dragging
+            - https://bost.ocks.org/mike/miserables/
+            - https://www.d3-graph-gallery.com/bubble.html
+            - https://www.d3-graph-gallery.com/graph/bubble_tooltip.html
+            - https://bl.ocks.org/armollica/3b5f83836c1de5cca7b1d35409a013e3
+            - https://observablehq.com/@d3/connected-scatterplot
+            - https://observablehq.com/@d3/ridgeline-plot
+            - http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
+            - https://www.d3-graph-gallery.com/graph/lollipop_animationStart.html
+            - https://www.d3-graph-gallery.com/streamgraph.html
+            - https://bl.ocks.org/mbostock/e9ba78a2c1070980d1b530800ce7fa2b
+                // IMPRESSIONANTE //
+            - https://bl.ocks.org/HarryStevens/f636199a46fc4b210fbca3b1dc4ef372
+            - https://github.com/d3/d3-force
+            - https://www.d3-graph-gallery.com/graph/arc_template.html
+            - https://bl.ocks.org/rpgove/53bb49d6ed762139f33bdaea1f3a9e1c
+            - http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c
+            - http://bl.ocks.org/nbremer/94db779237655907b907
+                // IMPRESSIONANTE //
+        ✔ Investigar exemplos Chart.js @5m @done(20-02-13 16:43)
+            - https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
+            // Mais básico, para quantidades menores de informação //
+            Grafos => Bibliotecas e Exemplos:
+                ✔ Cola.JS @done(20-02-13 17:54)
+                    - https://ialab.it.monash.edu/webcola/
+                    - https://ialab.it.monash.edu/webcola/examples/browsemovies.html
+                    - https://js.cytoscape.org/demos/2ebdc40f1c2540de6cf0/
+                ✔ Cytoscape @done(20-02-13 17:55)
+                    ☐ https://js.cytoscape.org @10m
+                ✔ VivaGraph @done(20-02-13 18:01)
+                    - https://github.com/anvaka/VivaGraphJS
+                    - http://www.yasiv.com/amazon#/Search?q=design&category=Books&lang=US
+                    https://leafletjs.com/
+                    https://github.com/wbkd/awesome-d3
+                    http://timeline.knightlab.com/
+                    https://visjs.org/
+                    https://docs.bokeh.org/en/latest/
+                    http://holoviews.org/
+                    https://toyplot.readthedocs.io/en/stable/
+                    http://ggvis.rstudio.com/
+                    http://lattice.r-forge.r-project.org/
+                    http://hafen.github.io/rbokeh/
+                    https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbQ2hyaXN0bWFzXSAtLT58R2V0IG1vbmV5fCBCKEdvIHNob3BwaW5nKVxuQiAtLT4gQ3tMZXQgbWUgdGhpbmt9XG5DIC0tPnxPbmV8IERbTGFwdG9wXVxuQyAtLT58VHdvfCBFW2lQaG9uZV1cbkMgLS0-fFRocmVlfCBGW2ZhOmZhLWNhciBDYXJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ
+                    https://wavedrom.com/
+                    https://github.com/charted-co/charted
+                    http://circos.ca/
+                    https://github.com/gephi/gephi
+                    https://kepler.gl/
+                    http://lightning-viz.org/
+                    https://rawgraphs.io/
+                    https://github.com/holman/spark
+                    http://datavisualizationtoolkit.com/
+
+  
+    Planilhas:
+        ☐ Descobrir como converter em JSON
+            ☐ Verificar aplicação/packages de Node.js ou bibliotecas JS @15m
+        ☐ Verificar possíveis integrações com o Grafana @
+
+
+    Hardwares para verificar:
+        ☐ placas c/ display
+        ☐ projetores (projection mapping)
+        ☐ displays OLED
+        ☐ touchmonitors
+        ☐ oculus quest
+        ☐ 3D printer https://www.sethi3d.com.br/s3x
+        ☐ CNC https://atividademaker.lojaintegrada.com.br/
+        ☐ raspberry pi 4
+        ☐ sonoff https://sonoff.tech/product/wifi-diy-smart-switches/powr2
+        ☐ smart home assistants
+        ☐ tapete p/ solda
+
+Tech Stack:
+    Apk Prototyping:
+        ☐ MIT App Inventor
+        ☐ Flutter
+    SQL:
+        ☐ Postgres 
+        ☐ DBeaver
+    Server Infrastructure:
+        ☐ Raspberry Pi 3/4
+        ☐ Amazon AWS
+        ☐ Node.js
+    Applications:
+        ☐ NodeRed
+    Graphics:
+        ☐ Graphana
+    IOT:
+        ☐ PlaformIO
+
+Espaço Da Vinci:
+    Características/Habilitações do Artista:
+        ☐ Design
+        ☐ Tecnologia
+        ☐ Experiência
+        ☐ Imersão
+        ☐ Interação
+        ☐ Futurismo, Foresight, Imaginação
+        Skillset da equipe reflete o Artista:
+        ☐ Arquiteto
+        ☐ Artista
+        ☐ Designer
+        ☐ Cientista
+        ☐ Engenheiro
+        ☐ Estrategista
+        ☐ Visionário
