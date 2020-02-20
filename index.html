@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Jazz Connections</title>
+    <title>Grafo de Palavras-Chave (CAPES)</title>
     <style>
         body,
         h1,
@@ -20,12 +20,14 @@
         }
 
         #notes {
-            position:fixed;
+            position: fixed;
             right: 0;
             margin-left: 20px;
             padding: 40px;
             background: aliceblue;
             opacity: 0;
+            overflow: auto;
+            height: 87vh;
         }
 
         h1,
@@ -71,15 +73,18 @@
         line.edge {
             cursor: pointer;
             stroke: #aaa;
+            /* espessura da linha HARDCODED */
             stroke-width: 2px;
+            z-index: 10;
         }
 
         .labelNode text,
         text.labelNode {
             cursor: pointer;
             fill: #444;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: normal;
+            pointer-events: none;
         }
 
         ul.connection {
@@ -153,43 +158,44 @@ ul.connection li:last-child {
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
-        // Define the dimensions of the visualization. We're using
-        // a size that's convenient for displaying the graphic on
-        // http://jsDataV.is
-
-        var width = 860,
-            height = window.screen.height-200;
-
         // Visual properties of the graph are next. We need to make
         // those that are going to be animated accessible to the
         // JavaScript.
+
+        var width = window.screen.width -100,
+            height = window.screen.height * 1.5;
+
+        var items = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
+            '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+            '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A',
+            '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+            '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+            '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+            '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+            '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+            '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+            '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'
+        ];
 
         var labelFill = '#444';
         var adjLabelFill = '#aaa';
         var edgeStroke = '#aaa';
         var nodeFill = '#ccc';
-        var nodeRadius = 10;
+        var raioMinimo = 3;
         var selectedNodeRadius = 30;
 
         var linkDistance = Math.min(width, height) / 4;
 
-        // Find the main graph container.
-
         var graph = d3.select('#graph');
-
-        // Create the SVG container for the visualization and
-        // define its dimensions.
-
         var svg = graph.append('svg')
             .attr('width', width)
             .attr('height', height);
 
-        // Select the container for the notes and dimension it.
         var notes = d3.select('#notes')
             .style({
                 'width': 620 - width + 'px',
-                'height': height + 'px'
             });
+
 
         // Utility function to update the position properties
         // of an arbtrary edge that's part of a D3 selection.
@@ -242,7 +248,7 @@ ul.connection li:last-child {
             var shiftX = textWidth * (diffX - dist) / (dist * 2);
             shiftX = Math.max(-textWidth, Math.min(0, shiftX));
 
-            var shiftY = pseudonode.node.selected ? selectedNodeRadius : nodeRadius;
+            var shiftY = pseudonode.node.selected ? selectedNodeRadius : raioMinimo;
             shiftY = 0.5 * shiftY * diffY / Math.abs(diffY);
 
             var select = d3.select(text);
@@ -256,6 +262,7 @@ ul.connection li:last-child {
         var data = [];
         var nodes = [];
         var relacoes = [];
+
         var getJSON = $.getJSON("./br-capes-agrupado.json", function (json) {
             data = json;
             newtrim = function (array) {
@@ -269,15 +276,20 @@ ul.connection li:last-child {
                 })
                 return newArray
             }
+
             data = newtrim(data).splice(0, 200);
 
             nodes = data.map(function (entry, idx, list) {
 
                 var node = {};
-                node.title = entry.DS_PALAVRA_CHAVE;
 
-                //node.links = entry.musicians.slice(0);
+                var item = items[Math.floor(Math.random() * items.length)];
+                var raio = raioMinimo + (entry.NM_ORIENTADOR.length * 1.2);;
+
+                node.title = entry.DS_PALAVRA_CHAVE;
                 node.links = entry.NM_ORIENTADOR;
+                node.color = item;
+                node.raio = raio;
 
                 var radius = 0.4 * Math.min(height, width);
                 var theta = idx * 2 * Math.PI / list.length;
@@ -300,8 +312,6 @@ ul.connection li:last-child {
 
                     var links = []
 
-                    //adicao nova
-
                     autor.forEach((e1) => autorAlvo.forEach((e2) => {
                         if (e1 === e2) {
                             links.push(e1)
@@ -319,7 +329,7 @@ ul.connection li:last-child {
             }
 
             renderEverything();
-            
+
         })
 
         const renderEverything = () => {
@@ -344,19 +354,15 @@ ul.connection li:last-child {
                 .classed('node', true)
                 .call(positionNode);
 
-        //DEFININDO TAMANHO DOS NODES AQUI => a pendência é que o tamanho reseta depois de um tempo
+            // DEFININDO TAMANHO DOS NODES AQUI
             nodeSelection.append('circle')
-                .attr('r', function(d){
-                    var raioMinimo = 10;
-                    return raioMinimo + (d.links.length * 2);
-                }
-                    )
+                .attr('r', function(d){return d.raio})
                 .attr('data-node-index', function (d, i) {
                     return i;
                 })
                 .style('fill', nodeFill)
 
-            // Now that we have our main selections (relacoes and
+            // Now that we have our main selections (edges and
             // nodes), we can create some subsets of those
             // selections that will be helpful. Those subsets
             // will be tied to individual nodes, so we'll
@@ -440,7 +446,6 @@ ul.connection li:last-child {
                 });
 
                 // And create a link between them.
-
                 labelLinks.push({
                     source: idx * 2,
                     target: idx * 2 + 1
@@ -448,11 +453,6 @@ ul.connection li:last-child {
             });
 
             // Construct the selections for the label layout.
-
-            // There's no need to add any markup for the
-            // pseudo-links between the label nodes, but
-            // we do need a selection so we can run the
-            // force layout.
 
             var labelLinkSelection = svg.selectAll('line.labelLink')
                 .data(labelLinks);
@@ -505,9 +505,14 @@ ul.connection li:last-child {
                 .nodes(nodes)
                 .links(relacoes)
                 .linkDistance(linkDistance)
-                .charge(-50)
-                .gravity(0.1)
-                .alpha(0.1)
+                .charge(charge)
+                .gravity(0.2)
+
+            function charge(d) {
+                return d.raio * d.raio * -0.7
+            }
+
+
 
             // Create the force layout for the labels.
 
@@ -518,7 +523,7 @@ ul.connection li:last-child {
                 .gravity(0)
                 .linkDistance(0)
                 .linkStrength(0.8)
-                .charge(-100);
+                .charge(-50);
 
             // Let users drag the nodes.
 
@@ -542,10 +547,10 @@ ul.connection li:last-child {
                 var fillColor;
 
                 // In all cases we start by resetting
-                // all the nodes and relacoes to their
+                // all the nodes and edges to their
                 // de-selected state. We may override
                 // this transition for some nodes and
-                // relacoes later.
+                // edges later.
 
                 nodeSelection
                     .each(function (node) {
@@ -553,10 +558,7 @@ ul.connection li:last-child {
                     })
                     .selectAll('circle')
                     .transition()
-                    .attr('r', function(d){
-                    var raioMinimo = 10;
-                    return raioMinimo + (d.links.length * 2);
-                })
+                    .attr('r',function(d){return d.raio} )
                     .style('fill', nodeFill);
 
                 edgeSelection
@@ -576,7 +578,7 @@ ul.connection li:last-child {
                     // changing the styles of some of the
                     // elements in the graph.
 
-                    // First we transition the incident relacoes.
+                    // First we transition the incident edges.
 
                     node.incidentEdgeSelection
                         .transition()
@@ -586,10 +588,7 @@ ul.connection li:last-child {
 
                     node.adjacentNodeSelection.selectAll('circle')
                         .transition()
-                        .attr('r', function(d){
-                    var raioMinimo = 10;
-                    return raioMinimo + (d.links.length * 2);
-                })
+                        .attr('r', function(d){return d.raio})
                         .style('fill', node.color);
 
                     labelSelection
@@ -611,10 +610,7 @@ ul.connection li:last-child {
 
                     d3.selectAll('circle[data-node-index="' + node.index + '"]')
                         .transition()
-                        .attr('r', function(d){
-                            var raioMinimo = 30;
-                            return raioMinimo + (d.links.length * 2);
-                        })
+                        .attr('r', function(d){return d.raio * 1.4})
                         .style('fill', node.color);
 
                     // Make sure the node's label is visible
@@ -629,7 +625,7 @@ ul.connection li:last-child {
                     // And note the desired color for bundling with
                     // the transition of the label position.
 
-                    fillColor = node.text;
+                    fillColor = node.color;
 
                     // Delete the current notes section to prepare
                     // for new information.
@@ -720,6 +716,137 @@ ul.connection li:last-child {
 
             };
 
+            var nodeHovered = function (node) {
+
+
+                if (d3.event.defaultPrevented) return;
+
+                var fillColor;
+
+                nodeSelection
+                    .each(function (node) {
+                        node.selected = false;
+                    })
+                    .selectAll('circle')
+                    .transition()
+                    .attr('r',function(d){return d.raio} )
+                    .style('fill', nodeFill);
+
+                edgeSelection
+                    .transition()
+                    .style('stroke', edgeStroke);
+
+                labelSelection
+                    .transition()
+                    .style('opacity', 0)
+
+                // Now see if the node wasn't previously selected.
+
+          
+
+                    // This node wasn't selected before, so
+                    // we want to select it now. That means
+                    // changing the styles of some of the
+                    // elements in the graph.
+
+                    // First we transition the incident edges.
+
+                    node.incidentEdgeSelection
+                        .transition()
+                        .style('stroke', node.color);
+
+                    // Now we transition the adjacent nodes.
+
+                    node.adjacentNodeSelection.selectAll('circle')
+                        .transition()
+                        .attr('r', function(d){return d.raio})
+                        .style('fill', node.color);
+
+                    labelSelection
+                        .filter(function (label) {
+                            var adjacent = false;
+                            node.adjacentNodeSelection.each(function (d) {
+                                if (label.node === d) {
+                                    adjacent = true;
+                                }
+                            })
+                            return adjacent;
+                        })
+                        .transition()
+                        .style('opacity', 1)
+                        .selectAll('text')
+                        .style('fill', adjLabelFill)
+                        .style('opacity', 1)
+
+                    // And finally, transition the node itself.
+
+                    d3.selectAll('circle[data-node-index="' + node.index + '"]')
+                        .transition()
+                        .attr('r', function(d){return d.raio * 1.4})
+                        .style('fill', node.color);
+
+                    // Make sure the node's label is visible
+
+                    labelSelection
+                        .filter(function (label) {
+                            return label.node === node;
+                        })
+                        .transition()
+                        .style('opacity', 1)
+              
+
+                    // And note the desired color for bundling with
+                    // the transition of the label position.
+
+                    fillColor = node.color;
+
+            };
+
+            var mouseOut = function (node){
+                
+                labelSelection
+                        .transition()
+                        .style('opacity', 1)
+                        .selectAll('text')
+                        .style('fill', labelFill)
+                        // .style('opacity', 0)git 
+
+                    // The fill color for the current node's
+                    // label must also be bundled with its
+                    // position transition.
+
+                    fillColor = labelFill;
+
+
+                var text = d3.select('text[data-node-index="' + node.index + '"]').node();
+                var label = null;
+                labelSelection.each(function (d) {
+                    if (d.node === node) {
+                        label = d;
+                    }
+                })
+
+                if (text && label) {
+                    positionLabelText(text, label, fillColor);
+                }
+
+                console.log('mouseout');
+
+                nodeSelection
+                    .selectAll('circle')
+                    .transition()
+                    .attr('r',function(d){return d.raio} )
+                    .style('fill', nodeFill);
+
+                edgeSelection
+                    .transition()
+                    .style('stroke', edgeStroke);
+
+                labelSelection
+                    .transition()
+                    .style('opacity', 0);
+            }
+
             // Function to handle click on edges.
 
             var edgeClicked = function (edge, idx) {
@@ -758,6 +885,10 @@ ul.connection li:last-child {
                 edge.selected = !selected;
 
             };
+            //MouseOver
+            nodeSelection.on('mouseenter', nodeHovered)
+            //mouseout
+            nodeSelection.on('mouseout', mouseOut)
 
             // Handle clicks on the nodes.
 
@@ -767,7 +898,7 @@ ul.connection li:last-child {
                 nodeClicked(pseudonode.node);
             });
 
-            // Handle clicks on the relacoes.
+            // Handle clicks on the edges.
 
             edgeSelection.on('click', edgeClicked);
             connectionSelection.on('click', edgeClicked);
@@ -833,7 +964,7 @@ ul.connection li:last-child {
                         });
                 });
 
-                // Update the posistions of the nodes and relacoes.
+                // Update the posistions of the nodes and edges.
 
                 nodeSelection.call(positionNode);
                 labelSelection.call(positionNode);
@@ -847,8 +978,6 @@ ul.connection li:last-child {
             labelForce.start();
 
         }
-
-
     </script>
 </body>
 
