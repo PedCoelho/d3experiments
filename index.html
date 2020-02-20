@@ -11,6 +11,7 @@
             color: #444;
             font-family: 'Helvetica Neue', Helvetica, sans-serif;
             font-weight: 300;
+            margin: 0;
         }
 
         #graph {
@@ -22,6 +23,9 @@
             position:fixed;
             right: 0;
             margin-left: 20px;
+            padding: 40px;
+            background: aliceblue;
+            opacity: 0;
         }
 
         h1,
@@ -153,8 +157,8 @@ ul.connection li:last-child {
         // a size that's convenient for displaying the graphic on
         // http://jsDataV.is
 
-        var width = window.screen.width,
-            height = window.screen.height;
+        var width = 860,
+            height = window.screen.height-200;
 
         // Visual properties of the graph are next. We need to make
         // those that are going to be animated accessible to the
@@ -340,7 +344,7 @@ ul.connection li:last-child {
                 .classed('node', true)
                 .call(positionNode);
 
-                //DEFININDO TAMANHO DOS NODES AQUI => a pendência é que o tamanho reseta depois de um tempo
+        //DEFININDO TAMANHO DOS NODES AQUI => a pendência é que o tamanho reseta depois de um tempo
             nodeSelection.append('circle')
                 .attr('r', function(d){
                     var raioMinimo = 10;
@@ -361,7 +365,7 @@ ul.connection li:last-child {
 
             nodeSelection.each(function (node) {
 
-                // First let's identify all relacoes that are
+                // First let's identify all edges that are
                 // incident to the node. We collect those as
                 // a D3 selection so we can manipulate the
                 // set easily with D3 utilities.
@@ -501,7 +505,9 @@ ul.connection li:last-child {
                 .nodes(nodes)
                 .links(relacoes)
                 .linkDistance(linkDistance)
-                .charge(-500);
+                .charge(-50)
+                .gravity(0.1)
+                .alpha(0.1)
 
             // Create the force layout for the labels.
 
