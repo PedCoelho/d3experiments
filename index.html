@@ -342,7 +342,11 @@ ul.connection li:last-child {
 
                 //DEFININDO TAMANHO DOS NODES AQUI => a pendência é que o tamanho reseta depois de um tempo
             nodeSelection.append('circle')
-                .attr('r', function(d){return d.links.length})
+                .attr('r', function(d){
+                    var raioMinimo = 10;
+                    return raioMinimo + (d.links.length * 2);
+                }
+                    )
                 .attr('data-node-index', function (d, i) {
                     return i;
                 })
