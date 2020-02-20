@@ -547,7 +547,10 @@ ul.connection li:last-child {
                     })
                     .selectAll('circle')
                     .transition()
-                    .attr('r', nodeRadius)
+                    .attr('r', function(d){
+                    var raioMinimo = 10;
+                    return raioMinimo + (d.links.length * 2);
+                })
                     .style('fill', nodeFill);
 
                 edgeSelection
@@ -577,7 +580,10 @@ ul.connection li:last-child {
 
                     node.adjacentNodeSelection.selectAll('circle')
                         .transition()
-                        .attr('r', nodeRadius)
+                        .attr('r', function(d){
+                    var raioMinimo = 10;
+                    return raioMinimo + (d.links.length * 2);
+                })
                         .style('fill', node.color);
 
                     labelSelection
@@ -599,7 +605,10 @@ ul.connection li:last-child {
 
                     d3.selectAll('circle[data-node-index="' + node.index + '"]')
                         .transition()
-                        .attr('r', selectedNodeRadius)
+                        .attr('r', function(d){
+                            var raioMinimo = 30;
+                            return raioMinimo + (d.links.length * 2);
+                        })
                         .style('fill', node.color);
 
                     // Make sure the node's label is visible
