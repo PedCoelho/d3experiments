@@ -5,71 +5,73 @@ Todo Today:
         ✔ Procurar estimativa inicial YAS @10m @started(20-02-12 19:36) @done(20-02-12 19:49) @lasted(13m18s)
             ✔ Extrair workflow empregado @5m @done(20-02-12 19:49)
         ✔ Investigar proposta Coolers @5m @done(20-02-12 20:15)
-            // Informações relevantes do custo de desenvolvimento //
-            // Alguns outros pontos //
 
     Data Vis:
-        ✔ Índice de Referências Data Vis, no Github. @done(20-02-13 17:25)
-            - https://github.com/fasouto/awesome-dataviz
-            // IMPORTANTE //
+        ✔ Repositórios: @done(20-02-13 17:25)
+            ✔ https://github.com/fasouto/awesome-dataviz @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/ @done(20-02-18 09:11)
+            ✔ https://observablehq.com/ @done(20-02-18 09:11)
             
-        ✔ Investigar outras aplicações de Data Vis c/ Código @15m @started(20-02-13 17:07) @done(20-02-13 17:21) @lasted(14m1s)
-            - http://hint.fm/projects/look/
-            - https://experiments.cleverfranke.com/experiments/smart-office-visualization/
-
         ✔ Investigar exemplos da biblioteca D3 @15m @started(20-02-12 20:15) @done(20-02-12 21:04) @lasted(49m5s)
-            Repositórios:
-                - https://www.d3-graph-gallery.com/
-                - https://observablehq.com/
-            
             Exemplos:
-                - https://observablehq.com/@d3/versor-dragging
-                - https://bost.ocks.org/mike/miserables/
-                - https://www.d3-graph-gallery.com/bubble.html
-                - https://www.d3-graph-gallery.com/graph/bubble_tooltip.html
-                - https://bl.ocks.org/armollica/3b5f83836c1de5cca7b1d35409a013e3
-                - https://observablehq.com/@d3/connected-scatterplot
-                - https://observablehq.com/@d3/ridgeline-plot
-                - http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
-                - https://www.d3-graph-gallery.com/graph/lollipop_animationStart.html
-                - https://www.d3-graph-gallery.com/streamgraph.html
-                - https://bl.ocks.org/mbostock/e9ba78a2c1070980d1b530800ce7fa2b
-                    // IMPRESSIONANTE //
-                - https://bl.ocks.org/HarryStevens/f636199a46fc4b210fbca3b1dc4ef372
-                - https://github.com/d3/d3-force
-                - https://www.d3-graph-gallery.com/graph/arc_template.html
-                - https://bl.ocks.org/rpgove/53bb49d6ed762139f33bdaea1f3a9e1c
-                - http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c
-                - http://bl.ocks.org/nbremer/94db779237655907b907
-                    // IMPRESSIONANTE //
-
+            ✔ https://observablehq.com/@d3/versor-dragging @done(20-02-18 09:11)
+            ✔ https://bost.ocks.org/mike/miserables/ @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/bubble.html @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/graph/bubble_tooltip.html @done(20-02-18 09:11)
+            ✔ https://bl.ocks.org/armollica/3b5f83836c1de5cca7b1d35409a013e3 @done(20-02-18 09:11)
+            ✔ https://observablehq.com/@d3/connected-scatterplot @done(20-02-18 09:11)
+            ✔ https://observablehq.com/@d3/ridgeline-plot @done(20-02-18 09:11)
+            ✔ http://bl.ocks.org/nbremer/21746a9668ffdf6d8242 @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/graph/lollipop_animationStart.html @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/streamgraph.html @done(20-02-18 09:11)
+            ✔ https://bl.ocks.org/mbostock/e9ba78a2c1070980d1b530800ce7fa2b    // IMPRESSIONANTE // @done(20-02-18 09:11)
+            ✔ https://bl.ocks.org/HarryStevens/f636199a46fc4b210fbca3b1dc4ef372 @done(20-02-18 09:11)
+            ✔ https://github.com/d3/d3-force @done(20-02-18 09:11)
+            ✔ https://www.d3-graph-gallery.com/graph/arc_template.html @done(20-02-18 09:11)
+            ✔ https://bl.ocks.org/rpgove/53bb49d6ed762139f33bdaea1f3a9e1c @done(20-02-18 09:11)
+            ✔ http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c @done(20-02-18 09:11)
+            ✔ http://bl.ocks.org/nbremer/94db779237655907b907    // IMPRESSIONANTE // @done(20-02-18 09:11)
+        
         ✔ Investigar exemplos Chart.js @5m @done(20-02-13 16:43)
-            - https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
-            // Mais básico, para quantidades menores de informação //
+            ✔ https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/ @done(20-02-18 09:12)
+        
+        ✔ Investigar outras aplicações de Data Vis c/ Código @15m @started(20-02-13 17:07) @done(20-02-13 17:21) @lasted(14m1s)
+            ✔ http://hint.fm/projects/look/ @done(20-02-18 09:12)
+            ✔ https://experiments.cleverfranke.com/experiments/smart-office-visualization/ @done(20-02-18 09:12)
 
-        Grafos => Bibliotecas e Exemplos:
+            
+            Grafos => Bibliotecas e Exemplos:
             ✔ Cola.JS @done(20-02-13 17:54)
-                - https://ialab.it.monash.edu/webcola/
-                - https://ialab.it.monash.edu/webcola/examples/browsemovies.html
+            - https://ialab.it.monash.edu/webcola/
+            - https://ialab.it.monash.edu/webcola/examples/browsemovies.html
+        
             ✔ Cytoscape @done(20-02-14 18:46)
-                - https://js.cytoscape.org
-                - https://js.cytoscape.org/demos/2ebdc40f1c2540de6cf0/
-                - https://js.cytoscape.org/demos/images-breadthfirst-layout/
-                - https://js.cytoscape.org/demos/animated-bfs/
-                - https://js.cytoscape.org/demos/tokyo-railways/
-
+            - https://js.cytoscape.org
+            - https://js.cytoscape.org/demos/2ebdc40f1c2540de6cf0/
+            - https://js.cytoscape.org/demos/images-breadthfirst-layout/
+            - https://js.cytoscape.org/demos/animated-bfs/
+            - https://js.cytoscape.org/demos/tokyo-railways/
+            
             ✔ VivaGraph @done(20-02-13 18:01)
-                - https://github.com/anvaka/VivaGraphJS
-                - http://www.yasiv.com/amazon#/Search?q=design&category=Books&lang=US
+            - https://github.com/anvaka/VivaGraphJS
+            - http://www.yasiv.com/amazon#/Search?q=design&category=Books&lang=US
+        
             ✔ D3 @done(20-02-14 10:48)
-                - https://bl.ocks.org/emeeks/302096884d5fbc1817062492605b50dd
-                - https://bl.ocks.org/vasturiano/cb1a9862f2235082c9c3a21ac8457196
+            - https://bl.ocks.org/emeeks/302096884d5fbc1817062492605b50dd
+            - https://bl.ocks.org/vasturiano/cb1a9862f2235082c9c3a21ac8457196
+        
             ✔ VisJS @done(20-02-14 11:46)
-                - https://visjs.org/
-                - https://visjs.github.io/vis-network/docs/network/
-                - https://visjs.github.io/vis-network/examples/network/exampleApplications/lesMiserables.html
-                
-        Cartografia:
+            - https://visjs.org/
+            - https://visjs.github.io/vis-network/docs/network/
+            - https://visjs.github.io/vis-network/examples/network/exampleApplications/lesMiserables.html
+                Tutoriais:
+                    - https://itnext.io/d3-force-directed-graph-forces-experiments-for-dummies-20a5682935
+                    - http://bl.ocks.org/sathomas/11550728
+                    - http://jsdatav.is/visuals.html?id=11560633
+                    - https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811
+                    - https://medium.com/@sxywu/understanding-the-force-ef1237017d5
+                    
+            Cartografia:
             ✔ Leaflet @done(20-02-14 10:29)
                 - https://leafletjs.com/
             ✔ Deck.gl @done(20-02-14 18:05) (framework)
@@ -83,6 +85,8 @@ Todo Today:
         Charts:
             ✔ Mermaid @done(20-02-14 17:36)
                 - https://github.com/mermaid-js/mermaid
+        Ferramentas:
+            
              
     Planilhas:
         ☐ Descobrir como converter em JSON
@@ -101,6 +105,7 @@ Hardwares para verificar:
         ✔ raspberry pi 4 @done(20-02-14 17:09)
         ✔ sonoff https://sonoff.tech/product/wifi-diy-smart-switches/powr2 @done(20-02-14 17:09)
         ✔ smart home assistants @done(20-02-14 17:10)
+
 
 Tech Stack:
     Apk Prototyping:
@@ -137,28 +142,38 @@ Espaço Da Vinci:
         ☐ Estrategista
         ☐ Visionário
 
+
 Todo Today:
     Estruturar documento para listar pendências de infraestrutura:
         ☐ Compartilhar link com as equipes
         - goteiras
         - limpeza / facilities
         - água / recursos
+        - cafeteira quebrada
+        - janelas não fecham
+        - verificar protocolo de trancamento / abertura de portas
 
     Verificar práticas de coletivização dos projetos / conhecimentos:
         ✔ Pedir aplicação Leap Motion para o Matheus @done(20-02-14 17:07)
             ☐ Coletar e disponibilizar aplicação
         ✔ Pedir mapa UFRJ para Luiz @done(20-02-14 18:02)
+            ☐ Conseguir acesso aos arquivos
+                ✔ Esperando a resposta do Luiz @done(20-02-17 14:15)
             ☐ Coletar, buildar e disponibilizar a aplicação
         Ver com o Nicolas:
             ☐ Pedir link do Github
         ☐ Disponibilizar IDKIT / VR
         ☐ Analisar quem precisa ter acesso e como disponibilizar tudo (links, gitlab, etc)
+
     Falar sobre a distribuição das chaves:
-        ☐ 2 chaves sem dono
+        ☐ 2 chaves sem dono (Nicolas levou)
         ✔ 1 Pedro C. @done(20-02-14 19:07)
         ✔ 1 Luiz B. @done(20-02-14 19:07)
         ✔ 1 Luciana @done(20-02-14 19:07)
+
     Falar com Ricardo sobre as coisas:
-        ☐ Chegada no dia do acidente na Linha Amarela
-        ☐ Horário de chegada e saída (17h)
-        ☐ Tempo de deslocamento
+        ✔ Chegada no dia do acidente na Linha Amarela @done(20-02-19 09:28)
+        ✔ Horário de chegada e saída (17h) @done(20-02-19 09:28)
+        ✔ Tempo de deslocamento @done(20-02-19 09:28)
+        ✔ Ubers @done(20-02-19 09:28)
+            ☐ Colecionar os recibos e imprimir relatório
