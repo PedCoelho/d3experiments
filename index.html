@@ -68,13 +68,17 @@
             stroke: #fff;
             stroke-width: 1px;
         }
+        
+        .autor{
+            font-weight:700;
+        }
 
         .edge line,
         line.edge {
             cursor: pointer;
             stroke: #aaa;
             /* espessura da linha HARDCODED */
-            stroke-width: 2px;
+            stroke-width: 1px;
             z-index: 10;
         }
 
@@ -85,6 +89,8 @@
             font-size: 10px;
             font-weight: normal;
             pointer-events: none;
+            /* opacidade das labels */
+            opacity: 0;
         }
 
         ul.connection {
@@ -162,8 +168,13 @@ ul.connection li:last-child {
         // those that are going to be animated accessible to the
         // JavaScript.
 
-        var width = window.screen.width -100,
-            height = window.screen.height * 1.5;
+        // baseado no tamanho da tela
+        // var width = window.screen.width -100,
+        //     height = window.screen.height * 1.5;
+        
+        // //hardcoded
+            var width = 1000,
+                height = 800;
 
         var items = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
             '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -179,8 +190,13 @@ ul.connection li:last-child {
 
         var labelFill = '#444';
         var adjLabelFill = '#aaa';
-        var edgeStroke = '#aaa';
-        var nodeFill = '#ccc';
+        var edgeStroke = '#ccc';
+        var scrollStroke = 1 + 'px'
+        var selectScrollStroke = 2.5 + 'px'
+        var fontSize = 10 +'px';
+        //testando alteração
+        var nodeFill = '#bbb';
+
         var raioMinimo = 3;
         var selectedNodeRadius = 30;
 
@@ -196,6 +212,17 @@ ul.connection li:last-child {
                 'width': 620 - width + 'px',
             });
 
+        var maxRaio;
+        var minRaio;
+
+        const scale = (num, in_min, in_max, out_min, out_max) => {
+            return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
+        const calculoAlpha = function(d){
+                     let valor = scale(d.raio,minRaio,maxRaio,180,30);
+                     return 'rgb('+ valor +','+ valor +','+ valor +')';
+                }
 
         // Utility function to update the position properties
         // of an arbtrary edge that's part of a D3 selection.
@@ -251,9 +278,13 @@ ul.connection li:last-child {
             var shiftY = pseudonode.node.selected ? selectedNodeRadius : raioMinimo;
             shiftY = 0.5 * shiftY * diffY / Math.abs(diffY);
 
+            //Estilização do texto ON HOVER / CLICK
+
             var select = d3.select(text);
             if (fillColor) {
                 select = select.transition().style('fill', fillColor);
+                select = select.style('font-weight', 600)
+                select = select.style('font-size', fontSize )
             }
             select.attr('transform', 'translate(' + shiftX + ',' + shiftY + ')');
         };
@@ -265,6 +296,7 @@ ul.connection li:last-child {
 
         var getJSON = $.getJSON("./br-capes-agrupado.json", function (json) {
             data = json;
+            
             newtrim = function (array) {
                 var newArray = [];
                 array.forEach((el) => {
@@ -277,7 +309,7 @@ ul.connection li:last-child {
                 return newArray
             }
 
-            data = newtrim(data).splice(0, 200);
+            data = newtrim(data).slice(60 , 150);
 
             nodes = data.map(function (entry, idx, list) {
 
@@ -287,9 +319,11 @@ ul.connection li:last-child {
                 var raio = raioMinimo + (entry.NM_ORIENTADOR.length * 1.2);;
 
                 node.title = entry.DS_PALAVRA_CHAVE;
+                node.autores = entry.NM_DISCENTE;
                 node.links = entry.NM_ORIENTADOR;
                 node.color = item;
                 node.raio = raio;
+                
 
                 var radius = 0.4 * Math.min(height, width);
                 var theta = idx * 2 * Math.PI / list.length;
@@ -298,6 +332,9 @@ ul.connection li:last-child {
 
                 return node;
             });
+
+            maxRaio = Math.max.apply(Math, nodes.map(function(el) { return el.raio; }));
+            minRaio = Math.min.apply(Math, nodes.map(function(el) { return el.raio; }));
 
             for (var i = 0; i < data.length; i++) {
 
@@ -360,7 +397,9 @@ ul.connection li:last-child {
                 .attr('data-node-index', function (d, i) {
                     return i;
                 })
-                .style('fill', nodeFill)
+                //funcao original 21/02/20 - 15:17
+                // .style('fill', nodeFill)
+                .style('fill', calculoAlpha)
 
             // Now that we have our main selections (edges and
             // nodes), we can create some subsets of those
@@ -512,8 +551,6 @@ ul.connection li:last-child {
                 return d.raio * d.raio * -0.7
             }
 
-
-
             // Create the force layout for the labels.
 
             var labelForce = d3.layout.force()
@@ -522,7 +559,7 @@ ul.connection li:last-child {
                 .links(labelLinks)
                 .gravity(0)
                 .linkDistance(0)
-                .linkStrength(0.8)
+                .linkStrength(1)
                 .charge(-50);
 
             // Let users drag the nodes.
@@ -626,6 +663,7 @@ ul.connection li:last-child {
                     // the transition of the label position.
 
                     fillColor = node.color;
+                    fontSize = 12 +'px';
 
                     // Delete the current notes section to prepare
                     // for new information.
@@ -644,7 +682,7 @@ ul.connection li:last-child {
                     // Now add the notes content.
 
                     notes.append('h1').text(node.title);
-                    notes.append('h2').text(node.subtitle);
+                    notes.append('h2').text(node.autor);
                     if (node.url && node.image) {
                         notes.append('div')
                             .classed('artwork', true)
@@ -657,6 +695,13 @@ ul.connection li:last-child {
                     node.links.forEach(function (link) {
                         list.append('li')
                             .text(link);
+                    
+                    })
+                    node.autores.forEach(function (autores) {
+                        list.append('li')
+                        .classed('autor', true)
+                            .text(autores);
+                    
                     })
 
                     // With the content in place, transition
@@ -694,6 +739,7 @@ ul.connection li:last-child {
                     // position transition.
 
                     fillColor = labelFill;
+                    fontSize = 10 + 'px';
                 }
 
                 // Toggle the selection state for the node.
@@ -742,8 +788,6 @@ ul.connection li:last-child {
 
                 // Now see if the node wasn't previously selected.
 
-          
-
                     // This node wasn't selected before, so
                     // we want to select it now. That means
                     // changing the styles of some of the
@@ -753,7 +797,8 @@ ul.connection li:last-child {
 
                     node.incidentEdgeSelection
                         .transition()
-                        .style('stroke', node.color);
+                        .style('stroke', node.color)
+                        .style('stroke-width', selectScrollStroke)
 
                     // Now we transition the adjacent nodes.
 
@@ -799,6 +844,19 @@ ul.connection li:last-child {
                     // the transition of the label position.
 
                     fillColor = node.color;
+                    fontSize = 12 +'px';
+                    
+                var text = d3.select('text[data-node-index="' + node.index + '"]').node();
+                var label = null;
+                labelSelection.each(function (d) {
+                    if (d.node === node) {
+                        label = d;
+                    }
+                })
+
+                if (text && label) {
+                    positionLabelText(text, label, fillColor);
+                }
 
             };
 
@@ -809,14 +867,14 @@ ul.connection li:last-child {
                         .style('opacity', 1)
                         .selectAll('text')
                         .style('fill', labelFill)
-                        // .style('opacity', 0)git 
+                        // .style('opacity', 0)
 
                     // The fill color for the current node's
                     // label must also be bundled with its
                     // position transition.
 
                     fillColor = labelFill;
-
+                    fontSize = 10 + 'px';
 
                 var text = d3.select('text[data-node-index="' + node.index + '"]').node();
                 var label = null;
@@ -830,17 +888,16 @@ ul.connection li:last-child {
                     positionLabelText(text, label, fillColor);
                 }
 
-                console.log('mouseout');
-
                 nodeSelection
                     .selectAll('circle')
                     .transition()
                     .attr('r',function(d){return d.raio} )
-                    .style('fill', nodeFill);
+                    .style('fill', calculoAlpha);
 
                 edgeSelection
                     .transition()
-                    .style('stroke', edgeStroke);
+                    .style('stroke', edgeStroke)
+                    .style('stroke-width', scrollStroke);
 
                 labelSelection
                     .transition()
@@ -885,6 +942,7 @@ ul.connection li:last-child {
                 edge.selected = !selected;
 
             };
+
             //MouseOver
             nodeSelection.on('mouseenter', nodeHovered)
             //mouseout
@@ -896,6 +954,19 @@ ul.connection li:last-child {
 
             labelSelection.on('click', function (pseudonode) {
                 nodeClicked(pseudonode.node);
+
+                var text = d3.select('text[data-node-index="' + node.index + '"]').node();
+                var label = null;
+                labelSelection.each(function (d) {
+                    if (d.node === node) {
+                        label = d;
+                    }
+                })
+
+                if (text && label) {
+                    positionLabelText(text, label, fillColor);
+                }
+
             });
 
             // Handle clicks on the edges.
