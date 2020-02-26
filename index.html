@@ -90,7 +90,7 @@
             font-weight: normal;
             pointer-events: none;
             /* opacidade das labels */
-            opacity: 0;
+            /* opacity: 0; */
         }
 
         ul.connection {
@@ -309,7 +309,8 @@ ul.connection li:last-child {
                 return newArray
             }
 
-            data = newtrim(data).slice(60 , 150);
+
+            data = newtrim(data).slice(2700 , 3000);
 
             nodes = data.map(function (entry, idx, list) {
 
