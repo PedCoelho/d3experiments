@@ -35,6 +35,12 @@ html{
         cursor: grab;
     }
 
+    svg::before{
+        content:"Árvore da Família";
+        font-size: 15px;
+        color: black;
+    }
+
     svg:active{
         cursor: grabbing;
     }
@@ -67,16 +73,13 @@ button:hover{
 
 button:focus{
     outline:unset;
-    padding: 2px;
-  background-clip: content-box; /* support: IE9+ */
-    background-color: lightgreen;
-    border: 2px solid lightgreen;
+    background-color: darkgrey;
 
 }
 button:active{
     transform: scale(0.95);
     inset: none;
-    background-color: rgb(80,220,80);
+    background-color: rgb(100, 100, 100);
 }
 /* button:nth-of-type(2):active{
     background-color: rgb(220, 206, 80);
