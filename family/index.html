@@ -54,7 +54,8 @@ html{
         text-transform: uppercase;
         font-variant: small-caps;
         font-family: 'roboto';
-        content:"Árvore da Família";
+        /* content:"Árvore da Família"; */
+        content:attr(data-content);
         font-size: 35px;
         color: black;
         z-index:99;
@@ -127,8 +128,8 @@ button:active{
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src='https://cdn.jsdelivr.net/npm/d3-dtree@2.2.2/dist/dTree.min.js'></script>
     <div class="buttonContainer">
-        <button onclick="fetchData('./pat.json')">Árvore Paterna</button>
-    <button onclick="fetchData('./mat.json')">Árvore Materna</button>
+        <button onclick="fetchData('./pat.json','Árvore da Família: Coelho')">Árvore Paterna</button>
+    <button onclick="fetchData('./mat.json','Árvore da Família: Cabral')">Árvore Materna</button>
     </div>
     <!-- <input type="file" id="fileInput">
         <script>
@@ -168,7 +169,7 @@ button:active{
             ];
             var graph;
             var data = [];
-            function fetchData(url){
+            function fetchData(url,texto){
                 var getJSON = $.getJSON(url, function (json) {
                     data = json;
                     data.forEach(x => x.class = "node");
@@ -176,11 +177,13 @@ button:active{
                     if(graph){
                         let svg = graph.querySelector('svg')
                         svg.remove()
+                        graph.setAttribute('data-content', texto)
                         dtree()
                         }else{
                           dtree()
                                         
                             graph = document.querySelector("#graph");
+                            graph.setAttribute('data-content', 'Árvore da Família')
                                     }
                                     
                                 })   
