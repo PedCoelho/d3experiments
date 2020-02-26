@@ -9,10 +9,10 @@ function flatToHierarchy (flat) {
           all[item.name] = item
           if(item.spouse){
             all[item.name].marriages = [{
-                // spouse: {
-                //   name: item.spouse,
-                //   class: "node"
-                // } 
+                spouse: {
+                  name: item.spouse,
+                  class: "node"
+                } 
               }]
           }
           
