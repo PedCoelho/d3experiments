@@ -128,8 +128,8 @@ button:active{
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src='https://cdn.jsdelivr.net/npm/d3-dtree@2.2.2/dist/dTree.min.js'></script>
     <div class="buttonContainer">
-        <button onclick="fetchData('https:\/\/github.com/PedCoelho/d3experiments/blob/master/family/pat.json?raw=true','Árvore da Família: Coelho')">Árvore Paterna</button>
-    <button onclick="fetchData('https:\/\/github.com/PedCoelho/d3experiments/blob/master/family/mat.json?raw=true','Árvore da Família: Cabral')">Árvore Materna</button>
+        <button onclick="fetchData('./pat.json','Árvore da Família: Coelho')">Árvore Paterna</button>
+    <button onclick="fetchData('./mat.json','Árvore da Família: Cabral')">Árvore Materna</button>
     </div>
     <!-- <input type="file" id="fileInput">
         <script>
@@ -193,7 +193,7 @@ button:active{
                                         height: height,});
                 }
 
-                fetchData("https://github.com/PedCoelho/d3experiments/blob/master/family/mat.json?raw=true")
+                fetchData("./mat.json")
                 </script>
 </body>
 
