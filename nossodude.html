@@ -4,7 +4,6 @@
 <head>
     <meta charset='utf-8'>
     <title>Grafo de Palavras-Chave (CAPES)</title>
-    <link rel="stylesheet" type="text/css" href="./css/spin.css">
     <style>
         body,
         h1,
@@ -69,9 +68,9 @@
             stroke: #fff;
             stroke-width: 1px;
         }
-
-        .autor {
-            font-weight: 700;
+        
+        .autor{
+            font-weight:700;
         }
 
         .edge line,
@@ -162,9 +161,6 @@ ul.connection li:last-child {
     </div>
 
     <script src='http://d3js.org/d3.v3.min.js'></script>
-    <script type="module" src="./js/spin.js"></script>
-    <script type="module" src="./spin.js"></script>
-    <script src='http://d3js.org/d3.v3.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
@@ -175,9 +171,10 @@ ul.connection li:last-child {
         // baseado no tamanho da tela
         // var width = window.screen.width -100,
         //     height = window.screen.height * 1.5;
+        
         // //hardcoded
-        var width = 1000,
-            height = 800;
+            var width = 1000,
+                height = 800;
 
         var items = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
             '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -196,8 +193,7 @@ ul.connection li:last-child {
         var edgeStroke = '#ccc';
         var scrollStroke = 1 + 'px'
         var selectScrollStroke = 2.5 + 'px'
-        var fontSize = 10 + 'px';
-
+        var fontSize = 10 +'px';
         //testando alteração
         var nodeFill = '#bbb';
 
@@ -223,11 +219,10 @@ ul.connection li:last-child {
             return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
-        const calculoAlpha = function (d) {
-            let valor = scale(d.raio, minRaio, maxRaio, 180, 30);
-            return 'rgb(' + valor + ',' + valor + ',' + valor + ')';
-        }
-
+        const calculoAlpha = function(d){
+                     let valor = scale(d.raio,minRaio,maxRaio,180,30);
+                     return 'rgb('+ valor +','+ valor +','+ valor +')';
+                }
 
         // Utility function to update the position properties
         // of an arbtrary edge that's part of a D3 selection.
@@ -289,8 +284,7 @@ ul.connection li:last-child {
             if (fillColor) {
                 select = select.transition().style('fill', fillColor);
                 select = select.style('font-weight', 600)
-                select = select.style('font-size', fontSize)
-                select = select.style('opacity', 1)
+                select = select.style('font-size', fontSize )
             }
             select.attr('transform', 'translate(' + shiftX + ',' + shiftY + ')');
         };
@@ -300,11 +294,9 @@ ul.connection li:last-child {
         var nodes = [];
         var relacoes = [];
 
-
         var getJSON = $.getJSON("./br-capes-agrupado.json", function (json) {
-
             data = json;
-
+            
             newtrim = function (array) {
                 var newArray = [];
                 array.forEach((el) => {
@@ -317,8 +309,7 @@ ul.connection li:last-child {
                 return newArray
             }
 
-
-            data = newtrim(data).slice(2800, 3000);
+            data = newtrim(data).slice(60 , 150);
 
             nodes = data.map(function (entry, idx, list) {
 
@@ -332,7 +323,7 @@ ul.connection li:last-child {
                 node.links = entry.NM_ORIENTADOR;
                 node.color = item;
                 node.raio = raio;
-
+                
 
                 var radius = 0.4 * Math.min(height, width);
                 var theta = idx * 2 * Math.PI / list.length;
@@ -342,12 +333,8 @@ ul.connection li:last-child {
                 return node;
             });
 
-            maxRaio = Math.max.apply(Math, nodes.map(function (el) {
-                return el.raio;
-            }));
-            minRaio = Math.min.apply(Math, nodes.map(function (el) {
-                return el.raio;
-            }));
+            maxRaio = Math.max.apply(Math, nodes.map(function(el) { return el.raio; }));
+            minRaio = Math.min.apply(Math, nodes.map(function(el) { return el.raio; }));
 
             for (var i = 0; i < data.length; i++) {
 
@@ -380,10 +367,7 @@ ul.connection li:last-child {
 
             renderEverything();
 
-        }).always(
-            () => {
-                spinner.stop();}
-        )
+        })
 
         const renderEverything = () => {
             // Start the creation of the graph by adding the edges.
@@ -409,9 +393,7 @@ ul.connection li:last-child {
 
             // DEFININDO TAMANHO DOS NODES AQUI
             nodeSelection.append('circle')
-                .attr('r', function (d) {
-                    return d.raio
-                })
+                .attr('r', function(d){return d.raio})
                 .attr('data-node-index', function (d, i) {
                     return i;
                 })
@@ -613,9 +595,7 @@ ul.connection li:last-child {
                     })
                     .selectAll('circle')
                     .transition()
-                    .attr('r', function (d) {
-                        return d.raio
-                    })
+                    .attr('r',function(d){return d.raio} )
                     .style('fill', nodeFill);
 
                 edgeSelection
@@ -645,9 +625,7 @@ ul.connection li:last-child {
 
                     node.adjacentNodeSelection.selectAll('circle')
                         .transition()
-                        .attr('r', function (d) {
-                            return d.raio
-                        })
+                        .attr('r', function(d){return d.raio})
                         .style('fill', node.color);
 
                     labelSelection
@@ -669,9 +647,7 @@ ul.connection li:last-child {
 
                     d3.selectAll('circle[data-node-index="' + node.index + '"]')
                         .transition()
-                        .attr('r', function (d) {
-                            return d.raio * 1.4
-                        })
+                        .attr('r', function(d){return d.raio * 1.4})
                         .style('fill', node.color);
 
                     // Make sure the node's label is visible
@@ -687,7 +663,7 @@ ul.connection li:last-child {
                     // the transition of the label position.
 
                     fillColor = node.color;
-                    fontSize = 12 + 'px';
+                    fontSize = 12 +'px';
 
                     // Delete the current notes section to prepare
                     // for new information.
@@ -719,13 +695,13 @@ ul.connection li:last-child {
                     node.links.forEach(function (link) {
                         list.append('li')
                             .text(link);
-
+                    
                     })
                     node.autores.forEach(function (autores) {
                         list.append('li')
-                            .classed('autor', true)
+                        .classed('autor', true)
                             .text(autores);
-
+                    
                     })
 
                     // With the content in place, transition
@@ -799,76 +775,77 @@ ul.connection li:last-child {
                     })
                     .selectAll('circle')
                     .transition()
-                    .attr('r', function (d) {
-                        return d.raio
-                    })
+                    .attr('r',function(d){return d.raio} )
                     .style('fill', nodeFill);
 
                 edgeSelection
                     .transition()
                     .style('stroke', edgeStroke);
 
-                // This node wasn't selected before, so
-                // we want to select it now. That means
-                // changing the styles of some of the
-                // elements in the graph.
-
-                // First we transition the incident edges.
-
-                node.incidentEdgeSelection
-                    .transition()
-                    .style('stroke', node.color)
-                    .style('stroke-width', selectScrollStroke)
-
-                // Now we transition the adjacent nodes.
-
-                node.adjacentNodeSelection.selectAll('circle')
-                    .transition()
-                    .attr('r', function (d) {
-                        return d.raio
-                    })
-                    .style('fill', node.color);
-
                 labelSelection
-                    .filter(function (label) {
-                        var adjacent = false;
-                        node.adjacentNodeSelection.each(function (d) {
-                            if (label.node === d) {
-                                adjacent = true;
-                            }
+                    .transition()
+                    .style('opacity', 0)
+
+                // Now see if the node wasn't previously selected.
+
+                    // This node wasn't selected before, so
+                    // we want to select it now. That means
+                    // changing the styles of some of the
+                    // elements in the graph.
+
+                    // First we transition the incident edges.
+
+                    node.incidentEdgeSelection
+                        .transition()
+                        .style('stroke', node.color)
+                        .style('stroke-width', selectScrollStroke)
+
+                    // Now we transition the adjacent nodes.
+
+                    node.adjacentNodeSelection.selectAll('circle')
+                        .transition()
+                        .attr('r', function(d){return d.raio})
+                        .style('fill', node.color);
+
+                    labelSelection
+                        .filter(function (label) {
+                            var adjacent = false;
+                            node.adjacentNodeSelection.each(function (d) {
+                                if (label.node === d) {
+                                    adjacent = true;
+                                }
+                            })
+                            return adjacent;
                         })
-                        return adjacent;
-                    })
-                    .transition()
-                    .style('opacity', 1)
-                    .selectAll('text')
-                    .style('fill', adjLabelFill)
-                    .style('opacity', 1)
+                        .transition()
+                        .style('opacity', 1)
+                        .selectAll('text')
+                        .style('fill', adjLabelFill)
+                        .style('opacity', 1)
 
-                // And finally, transition the node itself.
+                    // And finally, transition the node itself.
 
-                d3.selectAll('circle[data-node-index="' + node.index + '"]')
-                    .transition()
-                    .attr('r', function (d) {
-                        return d.raio * 1.4
-                    })
-                    .style('fill', node.color);
+                    d3.selectAll('circle[data-node-index="' + node.index + '"]')
+                        .transition()
+                        .attr('r', function(d){return d.raio * 1.4})
+                        .style('fill', node.color);
 
-                // Make sure the node's label is visible
+                    // Make sure the node's label is visible
 
-                labelSelection
-                    .filter(function (label) {
-                        return label.node === node;
-                    }).transition()
-                    .style('opacity', 1)
+                    labelSelection
+                        .filter(function (label) {
+                            return label.node === node;
+                        })
+                        .transition()
+                        .style('opacity', 1)
+              
 
+                    // And note the desired color for bundling with
+                    // the transition of the label position.
 
-                // And note the desired color for bundling with
-                // the transition of the label position.
-
-                fillColor = node.color;
-                fontSize = 12 + 'px';
-
+                    fillColor = node.color;
+                    fontSize = 12 +'px';
+                    
                 var text = d3.select('text[data-node-index="' + node.index + '"]').node();
                 var label = null;
                 labelSelection.each(function (d) {
@@ -883,21 +860,21 @@ ul.connection li:last-child {
 
             };
 
-            var mouseOut = function (node) {
-
+            var mouseOut = function (node){
+                
                 labelSelection
-                    .transition()
-                    .style('opacity', 1)
-                    .selectAll('text')
-                    .style('fill', labelFill)
-                // .style('opacity', 0)
+                        .transition()
+                        .style('opacity', 1)
+                        .selectAll('text')
+                        .style('fill', labelFill)
+                        // .style('opacity', 0)
 
-                // The fill color for the current node's
-                // label must also be bundled with its
-                // position transition.
+                    // The fill color for the current node's
+                    // label must also be bundled with its
+                    // position transition.
 
-                fillColor = labelFill;
-                fontSize = 10 + 'px';
+                    fillColor = labelFill;
+                    fontSize = 10 + 'px';
 
                 var text = d3.select('text[data-node-index="' + node.index + '"]').node();
                 var label = null;
@@ -914,9 +891,7 @@ ul.connection li:last-child {
                 nodeSelection
                     .selectAll('circle')
                     .transition()
-                    .attr('r', function (d) {
-                        return d.raio
-                    })
+                    .attr('r',function(d){return d.raio} )
                     .style('fill', calculoAlpha);
 
                 edgeSelection

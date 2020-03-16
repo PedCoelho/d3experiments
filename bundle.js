@@ -1,0 +1,1 @@
+console.error("\nC:\\Users\\user\\Desktop\\LABTodo\\spin.js:1\nimport {Spinner} from './js/spin.js';\r\n^\nParseError: 'import' and 'export' may appear only with 'sourceType: module'");

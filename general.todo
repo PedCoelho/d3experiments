@@ -39,8 +39,7 @@ Todo Today:
             ✔ http://hint.fm/projects/look/ @done(20-02-18 09:12)
             ✔ https://experiments.cleverfranke.com/experiments/smart-office-visualization/ @done(20-02-18 09:12)
 
-            
-            Grafos => Bibliotecas e Exemplos:
+        Grafos => Bibliotecas e Exemplos:
             ✔ Cola.JS @done(20-02-13 17:54)
             - https://ialab.it.monash.edu/webcola/
             - https://ialab.it.monash.edu/webcola/examples/browsemovies.html
@@ -64,20 +63,32 @@ Todo Today:
             - https://visjs.org/
             - https://visjs.github.io/vis-network/docs/network/
             - https://visjs.github.io/vis-network/examples/network/exampleApplications/lesMiserables.html
-                Tutoriais:
-                    - https://itnext.io/d3-force-directed-graph-forces-experiments-for-dummies-20a5682935
-                    - http://bl.ocks.org/sathomas/11550728
-                    - http://jsdatav.is/visuals.html?id=11560633
-                    - https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811
-                    - https://medium.com/@sxywu/understanding-the-force-ef1237017d5
+
+            ☐ Genealogy/Pedigree
+            - https://treehouse.gartner.io/ErikGartner/58e58be650453b6d49d7
+            - https://github.com/rstacruz/kingraph (*****highlight*****)
+            
+            Tutoriais:
+            - https://itnext.io/d3-force-directed-graph-forces-experiments-for-dummies-20a5682935
+            - http://bl.ocks.org/sathomas/11550728
+            - http://jsdatav.is/visuals.html?id=11560633
+            - https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811
+            - https://medium.com/@sxywu/understanding-the-force-ef1237017d5
+            - https://www.youtube.com/watch?v=Mucmb33711A (*****highlight*****)
                     
+            
             Cartografia:
             ✔ Leaflet @done(20-02-14 10:29)
                 - https://leafletjs.com/
+            ✔ Mapbox @done(20-03-02 11:11)
+                - https://www.mapbox.com/
+                - https://docs.mapbox.com/mapbox-gl-js/api/
             ✔ Deck.gl @done(20-02-14 18:05) (framework)
                 - https://deck.gl/#/
             ✔ Kepler.gl @done(20-02-14 18:04) (ferramenta)
                 - https://kepler.gl/
+            ✔ E-Charts @done(20-03-02 14:23)
+                - https://echarts.apache.org/en/index.html
                 
         Linhas do Tempo:
             ✔ Timeline @done(20-02-14 15:49)
@@ -87,12 +98,8 @@ Todo Today:
                 - https://github.com/mermaid-js/mermaid
         Ferramentas:
             
-             
     Planilhas:
-        ☐ Descobrir como converter em JSON
-            ☐ Verificar aplicação/packages de Node.js ou bibliotecas JS @15m
         ☐ Verificar possíveis integrações com o Grafana @
-
 
 Hardwares para verificar:
         ☐ placas de circuito c/ display ou placas com tecnologias específicas / facilitadoras da prototipação (Adafruit)
@@ -106,8 +113,12 @@ Hardwares para verificar:
         ✔ sonoff https://sonoff.tech/product/wifi-diy-smart-switches/powr2 @done(20-02-14 17:09)
         ✔ smart home assistants @done(20-02-14 17:10)
 
-
 Tech Stack:
+    Frameworks:
+        ☐ Vue.js
+        ☐ Angular.js
+        ☐ React.js
+        ☐ Ionic
     Apk Prototyping:
         ☐ MIT App Inventor
         ☐ Flutter
@@ -143,37 +154,61 @@ Espaço Da Vinci:
         ☐ Visionário
 
 
-Todo Today:
-    Estruturar documento para listar pendências de infraestrutura:
-        ☐ Compartilhar link com as equipes
-        - goteiras
-        - limpeza / facilities
-        - água / recursos
-        - cafeteira quebrada
-        - janelas não fecham
-        - verificar protocolo de trancamento / abertura de portas
 
-    Verificar práticas de coletivização dos projetos / conhecimentos:
-        ✔ Pedir aplicação Leap Motion para o Matheus @done(20-02-14 17:07)
-            ☐ Coletar e disponibilizar aplicação
-        ✔ Pedir mapa UFRJ para Luiz @done(20-02-14 18:02)
-            ☐ Conseguir acesso aos arquivos
-                ✔ Esperando a resposta do Luiz @done(20-02-17 14:15)
-            ☐ Coletar, buildar e disponibilizar a aplicação
-        Ver com o Nicolas:
-            ☐ Pedir link do Github
+Todo Today:
+
+Todo 27/02:
+    ✘ Verificar projetos em andamento e listar status @cancelled(20-03-02 11:44)
+    ✔ Conseguir acesso aos projetos e disponibilizar @done(20-03-02 11:44)
+        ✔ Mapa UFRJ @done(20-02-27 16:44)
+        ✔ Leap Motion @done(20-02-27 15:45)
+        ✔ Mindwave Unity @done(20-03-02 11:39)
         ☐ Disponibilizar IDKIT / VR
         ☐ Analisar quem precisa ter acesso e como disponibilizar tudo (links, gitlab, etc)
 
-    Falar sobre a distribuição das chaves:
-        ☐ 2 chaves sem dono (Nicolas levou)
-        ✔ 1 Pedro C. @done(20-02-14 19:07)
-        ✔ 1 Luiz B. @done(20-02-14 19:07)
-        ✔ 1 Luciana @done(20-02-14 19:07)
+Todo 03/03:
+    ✔ Falar com o Matheus sobre Frameworks ThreeJS, Shapefiles e Briefing do projeto @done(20-03-03 16:46)
+    ✔ Testar site CocaCola360 Android / iOS @done(20-03-02 15:30)
+    ✔ Testar aplicativo CocaCola360 Android / iOS @done(20-03-03 13:40)
+    ✔ Brainstorming AR Apk @done(20-03-02 16:59)
+    ✔ Conversar com Alice sobre AR General Motors @done(20-03-03 09:39)
+    ✘ Continuar testes Wikitude / Desenvolvimento AREaster @cancelled(20-03-11 18:58)
+    ✔ Incluir materiais no drive @done(20-03-11 18:58)
 
-    Falar com Ricardo sobre as coisas:
-        ✔ Chegada no dia do acidente na Linha Amarela @done(20-02-19 09:28)
-        ✔ Horário de chegada e saída (17h) @done(20-02-19 09:28)
-        ✔ Tempo de deslocamento @done(20-02-19 09:28)
-        ✔ Ubers @done(20-02-19 09:28)
-            ☐ Colecionar os recibos e imprimir relatório
+Todo 04/03:
+    ✘ Call Pão de Açúcar @cancelled(20-03-04 15:37)
+    ✔ Receber Colombianos @done(20-03-04 12:13)
+    ☐ Ver o artigo em:
+        - http://www.elprofesionaldelainformacion.com/contenidos/2014/mayo/07.pdf
+        - https://www.scimagojr.com/shapeofscience/
+        - https://blog.mapbox.com/bringing-3d-terrain-to-the-browser-with-three-js-410068138357
+        - https://www.scimagojr.com/shapeofscience/
+
+Todo 05/03:
+    ✔ Falar com Guilherme Gerolimich sobre inserção no vídeo @done(20-03-05 15:04)
+        ✔ Testar modificação do código exemplo Three JS @done(20-03-05 15:53)
+    ☐ Verificar vetor do LAB na aplicação mapa da UFRJ
+        //Ainda não funcionou
+        ☐ Corrigir Vetor LAB na aplicação
+    ✔ Resgatar e tentar estimar etapas desenvolvimento de aplicação AR @done(20-03-11 18:56)
+    
+
+Todo 06/03:
+    ✘ Three.JS > Incluir controles de teclado para modificar parâmetros da visualização @cancelled(20-03-11 18:56)
+
+Todo 12/03:
+    ✔ Verificar c/ Renato sobre questão do GPS offline. @done(20-03-12 17:54)
+    ☐ Continuar refinamentos da proposta General Motors
+    Todo GM:
+        ✔ Referências @done(20-03-12 18:16)
+        ✔ Condições da licença @done(20-03-12 18:16)
+        
+        ✔ Detalhamento de etapas @done(20-03-13 17:44)
+
+        ☐ Definição do que é Part-time
+        ☐ Projeto em 8 Semanas?
+        ☐ Presença no Evento
+
+        ✔ Demo video ao final da Jornada @done(20-03-12 18:18)
+
+    ☐ Continuar organização de arquivos no Drive MJV Lab
